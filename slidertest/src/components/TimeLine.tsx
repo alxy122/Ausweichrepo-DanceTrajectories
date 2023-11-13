@@ -14,6 +14,7 @@ function TimeLine(props: TimeLineProps) {
   const diagramRef = useRef<SVGPathElement | null>(null);
   const areaRef = useRef<SVGPathElement | null>(null);
   const [data, setData] = useState<number[]>([]);
+  const [diagramType, setDiagramType] = useState(0);
 
   const [windowWidth, setWindowWidth] = useState(props.width);
   // const [data] = useState(generateRandomArray(100, 0, 100));
@@ -32,13 +33,32 @@ function TimeLine(props: TimeLineProps) {
     //   console.log("test");
 
     // console.log("fd:", props.formationData);
-    let helper = meanErrorDiagram([0]);
+    let helper = meanErrorDiagram(props.selectedDancer);
     if (helper != null) {
       setData(helper);
     }
     d3.select(diagramRef.current).datum(data).attr("d", lineGenerator);
     d3.select(areaRef.current).datum(data).attr("d", areaGenerator);
   }, [props.formationData]);
+
+  useEffect(() => {
+    if (diagramType == 0) {
+      let helper = meanErrorDiagram(props.selectedDancer);
+      if (helper != null) {
+        setData(helper);
+      }
+      d3.select(diagramRef.current).datum(data).attr("d", lineGenerator);
+      d3.select(areaRef.current).datum(data).attr("d", areaGenerator);
+    } else if (diagramType == 1) {
+      let helper = calculateVariance(meanErrorDiagram(props.selectedDancer));
+
+      if (helper != null) {
+        setData(helper);
+      }
+      d3.select(diagramRef.current).datum(data).attr("d", lineGenerator);
+      d3.select(areaRef.current).datum(data).attr("d", areaGenerator);
+    }
+  }, [diagramType]);
 
   useEffect(() => {
     xValue = d3.scaleLinear(
@@ -214,7 +234,7 @@ function TimeLine(props: TimeLineProps) {
 
     let meanErrorPerFrame: number[] = [];
 
-    for (let i = 0; i < 2067; i++) {
+    for (let i = 0; i < 2065; i++) {
       let helper = 0;
       for (const dancer of selectedDancer) {
         var x_trajectory = props.transformedTrajectoryData[dancer][i][0];
@@ -236,21 +256,21 @@ function TimeLine(props: TimeLineProps) {
     return meanErrorPerFrame;
   }
 
-  // function calculateVariance(meanErrorPerFrame: number[]): number | null {
-  //   if (meanErrorPerFrame.length === 0 || props.formationData.length === 0)
-  //     return null;
+  function calculateVariance(meanErrorPerFrame: number[]) {
+    if (meanErrorPerFrame.length === 0 || props.formationData.length === 0)
+      return null;
 
-  //   const meanErrorMean =
-  //     meanErrorPerFrame.reduce((acc, value) => acc + value, 0) /
-  //     meanErrorPerFrame.length;
-  //   const variance =
-  //     meanErrorPerFrame.reduce(
-  //       (acc, value) => acc + Math.pow(value - meanErrorMean, 2),
-  //       0
-  //     ) / meanErrorPerFrame.length;
+    const meanErrorMean =
+      meanErrorPerFrame.reduce((acc, value) => acc + value, 0) /
+      meanErrorPerFrame.length;
+    const variance =
+      meanErrorPerFrame.reduce(
+        (acc, value) => acc + Math.pow(value - meanErrorMean, 2),
+        0
+      ) / meanErrorPerFrame.length;
 
-  //   return variance;
-  // }
+    return variance;
+  }
 
   // function generateRandomArray(min: number, max: number): number[] {
   //   meanErrorDiagram([]);
@@ -289,7 +309,9 @@ function TimeLine(props: TimeLineProps) {
           {/* <NextFormationButton currentTime={props.currentTime} setCurrentTime={props.onTimeChange} padding={props.padding}></NextFormationButton> */}
         </Col>
         <Col>
-          <TimeLineDropdownMenu></TimeLineDropdownMenu>
+          <TimeLineDropdownMenu
+            setDiagramType={setDiagramType}
+          ></TimeLineDropdownMenu>
         </Col>
       </Row>
     </>

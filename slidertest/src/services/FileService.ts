@@ -111,7 +111,7 @@ export async function traverseTransformedTrajectoriesXMLDocument (filePath: stri
                     var span = bbox2.attributes.getNamedItem("framespan")?.value as string
                     var frames=parseInt(span.split(":",2)[1])-parseInt(span.split(":",2)[0])
                     for (var i=0;i<=frames;i=i+1){
-                        helper.push([x, y]);
+                        helper.push([y,-x]);
                     }
                     // console.log(parseInt(span.split(":",2)[1])-parseInt(span.split(":",2)[0]))
                     
@@ -120,7 +120,6 @@ export async function traverseTransformedTrajectoriesXMLDocument (filePath: stri
             dancerData.push(helper);
         }
     })
-    console.log(dancerData)
     return dancerData;
 }
 

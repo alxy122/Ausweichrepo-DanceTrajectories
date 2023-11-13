@@ -27,23 +27,21 @@ function App() {
   const [selectedDancer, setSelectedDancer] = useState<number[]>([1]);
 
   useEffect(() => {
-    traverseTrajectoriesXMLDocument("src/assets/trajectories.xml").then(
-      (data) => {
-        // console.log("traj:", data);
-        setTrajectoryData(data);
-      }
-    );
+    traverseTrajectoriesXMLDocument("src/assets/finished.xml").then((data) => {
+      // console.log("traj:", data);
+      setTrajectoryData(data);
+    });
     traverseTransformedTrajectoriesXMLDocument(
-      "src/assets/2transformedTrajectories.xml"
+      "src/assets/transformedfinished.xml"
     ).then((data) => {
       setTransformedTrajectoryData(data);
     });
-    traverseInterpolatedFormations(
-      "src/assets/2interpolatedFormations.xml"
-    ).then((data) => {
-      // console.log("interform:", data);
-      setFormationData(data);
-    });
+    traverseInterpolatedFormations("src/assets/interpolatedfinished.xml").then(
+      (data) => {
+        // console.log("interform:", data);
+        setFormationData(data);
+      }
+    );
   }, []);
 
   const handleVideoTimeChange = (newTime: number) => {
@@ -80,7 +78,7 @@ function App() {
           </Col>
           <Col xxl={5} xl={6} lg={7} className="mt-3">
             <VideoAccordion
-              videoSrc="/src/assets/2ludw_cut.mp4"
+              videoSrc="/src/assets/ludw25fpscut.mp4"
               videoRef={videoRef}
               onTimeUpdate={setCurrentVideoTime}
               isPaused={isPaused}
