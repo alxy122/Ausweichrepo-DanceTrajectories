@@ -1,0 +1,197 @@
+{
+  "id": 0,
+  "dance": "",
+  "jointPositions": false,
+  "bar": 0,
+  "beat":0,
+  "shapes": [],
+  "intermediatePatterns": [],
+  "remarks": "",
+  "pointDescription": "",
+  "positions": [
+    {
+      "id": 1,
+      "position": [
+        {
+          "x": -1,
+          "y": 0.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        },
+        {
+          "x": -1,
+          "y": 1.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "position": [
+        {
+          "x": 1,
+          "y": 0.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        },
+        {
+          "x": 1,
+          "y": 1.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "position": [
+        {
+          "x": 3,
+          "y": -1.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        },
+        {
+          "x": 3,
+          "y": -0.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "position": [
+        {
+          "x": -3,
+          "y": -1.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        },
+        {
+          "x": -3,
+          "y": -0.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "position": [
+        {
+          "x": 3,
+          "y": 0.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        },
+        {
+          "x": 3,
+          "y": 1.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "position": [
+        {
+          "x": -3,
+          "y": 0.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        },
+        {
+          "x": -3,
+          "y": 1.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "position": [
+        {
+          "x": -1,
+          "y": -1.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        },
+        {
+          "x": -1,
+          "y": -0.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "position": [
+        {
+          "x": 1,
+          "y": -1.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        },
+        {
+          "x": 1,
+          "y": -0.5,
+          "bodyOrientation":0,
+          "headOrientation":0,
+          "pose": {
+            "limbs": []
+          }
+        }
+      ]
+    }
+  ]
+}

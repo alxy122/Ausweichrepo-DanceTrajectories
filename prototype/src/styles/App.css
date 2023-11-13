@@ -1,0 +1,11 @@
+
+@media only screen and (min-width: 800px) {
+    .load-choreo-modal {
+        width: 60vw; 
+        max-width: 60vw !important;
+    }
+}
+
+.center-me {
+    text-align: center;
+}

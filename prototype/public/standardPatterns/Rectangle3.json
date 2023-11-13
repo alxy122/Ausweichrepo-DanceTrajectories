@@ -1,0 +1,81 @@
+{
+    "id": 0,
+    "dance": "",
+    "remarks": "",
+    "bar": 0,
+    "beat":0,
+    "shapes": [],
+    "intermediatePatterns": [],
+    "pointDescription": "",
+    "positions": [
+      {
+        "id": 1,
+        "position": [
+          {
+            "x": 2.0,
+            "y": 0.0,
+            "bodyOrientation":0,
+            "headOrientation":0,
+            "pose": {
+              "limbs": []
+            }
+          },
+          {
+            "x": 0.5,
+            "y": 0.0,
+            "bodyOrientation":0,
+            "headOrientation":0,
+            "pose": {
+              "limbs": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "position": [
+          {
+            "x": -1.0,
+            "y": 0.0,
+            "bodyOrientation":0,
+            "headOrientation":0,
+            "pose": {
+              "limbs": []
+            }
+          },
+          {
+            "x": -2.5,
+            "y": 0.0,
+            "bodyOrientation":0,
+            "headOrientation":0,
+            "pose": {
+              "limbs": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "position": [
+          {
+            "x": 0.5,
+            "y": -1.5,
+            "bodyOrientation":0,
+            "headOrientation":0,
+            "pose": {
+              "limbs": []
+            }
+          },
+          {
+            "x": 2.0,
+            "y": -1.5,
+            "bodyOrientation":0,
+            "headOrientation":0,
+            "pose": {
+              "limbs": []
+            }
+          }
+        ]
+      }
+    ]
+  }

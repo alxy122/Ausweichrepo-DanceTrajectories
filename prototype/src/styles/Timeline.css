@@ -1,0 +1,19 @@
+.my-footer {
+    bottom:0px;
+    position:fixed;
+    padding-left: 0px !important;
+}
+
+.timeline{
+    overflow-x: scroll !important;
+}
+
+.narrow-border {
+    border:1px solid gray;
+}
+
+@media only screen and (max-height: 575px) { 
+    .adaptive-timeline {
+        display: none !important;
+    }
+}
