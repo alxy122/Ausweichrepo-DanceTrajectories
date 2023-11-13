@@ -1,0 +1,611 @@
+% !TeX spellcheck = de-DE
+% !TeX encoding = utf8
+% !TeX program = pdflatex
+% !BIB program = biber
+% -*- coding:utf-8 mod:LaTeX -*-
+
+% vv  scroll down to line 200 for content  vv
+
+
+\let\ifdeutsch\iftrue
+\let\ifenglisch\iffalse
+\input{pre-documentclass}
+\documentclass[
+  ngerman,
+  % fontsize=11pt is the standard
+  a4paper,  % Standard format - only KOMAScript uses paper=a4 - https://tex.stackexchange.com/a/61044/9075
+  twoside,  % we are optimizing for both screen and two-side printing. So the page numbers will jump, but the content is configured to stay in the middle (by using the geometry package)
+  bibliography=totoc,
+  %               idxtotoc,   %Index ins Inhaltsverzeichnis
+  %               liststotoc, %List of X ins Inhaltsverzeichnis, mit liststotocnumbered werden die Abbildungsverzeichnisse nummeriert
+  headsepline,
+  cleardoublepage=empty,
+  parskip=half,
+  %               draft    % um zu sehen, wo noch nachgebessert werden muss - wichtig, da Bindungskorrektur mit drin
+  draft=false
+]{scrbook}
+\input{config}
+
+% EN: The package scientific-thesis-cover (https://ctan.org/pkg/scientific-thesis-cover) was added to CTAN on January 1, 2018.
+%     It is available in recent texlive and miktex installations
+\usepackage[
+title={Visueller Vergleich
+von
+Tänzer-Trajektorien in
+Lateinformationschoreographien},
+author={Alexander Riedlinger},
+type=bachelor,
+institute=vis, % or other institute names - or just a plain string using {Demo\\Demo...}
+course={Informatik B.Sc.},
+examiner={Dr.\ Steffen Koch},
+supervisor={Samuel Beck,\ M.Sc. \\ Dr.\ Kuno Kurzhals},
+startdate={1.\ Juni 2023},
+enddate={1.\ Dezember 2023} 
+]{scientific-thesis-cover}
+
+\input{acronyms}
+
+\makeindex
+
+\begin{document}
+
+%tex4ht-Konvertierung verschönern
+\iftex4ht
+  % tell tex4ht to create picures also for formulas starting with '$'
+  % WARNING: a tex4ht run now takes forever!
+  \Configure{$}{\PicMath}{\EndPicMath}{}
+  %$ % <- syntax highlighting fix for emacs
+  \Css{body {text-align:justify;}}
+
+  %conversion of .pdf to .png
+  \Configure{graphics*}
+  {pdf}
+  {\Needs{"convert \csname Gin@base\endcsname.pdf
+      \csname Gin@base\endcsname.png"}%
+    \Picture[pict]{\csname Gin@base\endcsname.png}%
+  }
+\fi
+
+%\VerbatimFootnotes %verbatim text in Fußnoten erlauben. Geht normalerweise nicht.
+
+\input{commands}
+\pagenumbering{arabic}
+\Titelblatt
+
+%Eigener Seitenstil fuer die Kurzfassung und das Inhaltsverzeichnis
+\deftriplepagestyle{preamble}{}{}{}{}{}{\pagemark}
+%Doku zu deftriplepagestyle: scrguide.pdf
+\pagestyle{preamble}
+\renewcommand*{\chapterpagestyle}{preamble}
+
+
+
+%Kurzfassung / abstract
+%auch im Stil vom Inhaltsverzeichnis
+\ifdeutsch
+  \section*{Kurzfassung}
+\else
+  \section*{Abstract}
+\fi
+
+<Kurzfassung der Arbeit>
+
+\cleardoublepage
+
+
+% BEGIN: Verzeichnisse
+
+\iftex4ht
+\else
+  \microtypesetup{protrusion=false}
+\fi
+
+%%%
+% Literaturverzeichnis ins TOC mit aufnehmen, aber nur wenn nichts anderes mehr hilft!
+% \addcontentsline{toc}{chapter}{Literaturverzeichnis}
+%
+% oder zB
+%\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+%
+%%%
+
+%Produce table of contents
+%
+%In case you have trouble with headings reaching into the page numbers, enable the following three lines.
+%Hint by http://golatex.de/inhaltsverzeichnis-schreibt-ueber-rand-t3106.html
+%
+%\makeatletter
+%\renewcommand{\@pnumwidth}{2em}
+%\makeatother
+%
+\tableofcontents
+
+% Bei einem ungünstigen Seitenumbruch im Inhaltsverzeichnis, kann dieser mit
+% \addtocontents{toc}{\protect\newpage}
+% an der passenden Stelle im Fließtext erzwungen werden.
+
+\listoffigures
+\listoftables
+
+%Wird nur bei Verwendung von der lstlisting-Umgebung mit dem "caption"-Parameter benoetigt
+%\lstlistoflistings
+%ansonsten:
+\ifdeutsch
+  \listof{Listing}{Verzeichnis der Listings}
+\else
+  \listof{Listing}{List of Listings}
+\fi
+
+%mittels \newfloat wurde die Algorithmus-Gleitumgebung definiert.
+%Mit folgendem Befehl werden alle floats dieses Typs ausgegeben
+\ifdeutsch
+  \listof{Algorithmus}{Verzeichnis der Algorithmen}
+\else
+  \listof{Algorithmus}{List of Algorithms}
+\fi
+%\listofalgorithms %Ist nur für Algorithmen, die mittels \begin{algorithm} umschlossen werden, nötig
+
+% Abkürzungsverzeichnis
+\printnoidxglossaries
+
+\iftex4ht
+\else
+  %Optischen Randausgleich und Grauwertkorrektur wieder aktivieren
+  \microtypesetup{protrusion=true}
+\fi
+
+% END: Verzeichnisse
+
+
+% Headline and footline
+\renewcommand*{\chapterpagestyle}{scrplain}
+\pagestyle{scrheadings}
+\pagestyle{scrheadings}
+\ihead[]{}
+\chead[]{}
+\ohead[]{\headmark}
+\cfoot[]{}
+\ofoot[\usekomafont{pagenumber}\thepage]{\usekomafont{pagenumber}\thepage}
+\ifoot[]{}
+
+
+%% vv  scroll down for content  vv %%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Main content starts here
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Einleitung}
+%Einführung in das Thema
+
+In der Welt des Sports haben sich Sportvisualisierungen zu einem wichtigen Instrument entwickelt.
+Sie bieten sowohl den Zuschauern als auch den Fachleuten die Möglichkeit, tiefer in die Leistungen und die Taktiken der Sportler einzutauchen und den Sport aus einer neuen Perspektive zu betrachten.
+Diese Art von Visualisierungen ist bereits seit geraumer Zeit präsent, ihre Anfänge lassen sich allerdings nur schwerlich zurückverfolgen.
+Ein gutes Beispiel ist die von Sportjournalist Henry Chadwick in den 1870er Jahren entwickelte "Scorecard" sowie deren eigene Notation für das Erstellen von Baseball-Statistiken \cite{scorecard}.
+Dadurch konnten neben Spielergebnissen bereits statistische Kennzahlen wie der "Batting Average" erfasst werden, der die Schlagfertigkeit eines Spielers misst - das Verhältnis von Schlagversuch zu Treffern.
+Dieses Metrum wird auch heute noch verwendet und ist aussagekräftig.
+Sportvisualisierungen stehen insbesondere in großen, populären Sportarten wie Fußball und Formel 1 im Fokus.
+Die erste spanische Fußballliga, genannt LaLiga, gilt seit Jahren als Paradebeispiel für die Integration vielfältiger Visualisierungen.
+Seit 2021 ist die Liga zudem Microsoft-Partner \cite{microsoftazure}.
+Durch das Microsoft Azure Cloud-Computing werden pro Spiel mit bis zu 16 Kameras durch optisches Tracking bis zu 3,5 Millionen Datenpunkte gesammelt und algorithmisch ausgewertet.
+Das Ziel ist es, von veralteten Metriken, wie Ballbesitzquote oder Anzahl der Schüsse, abzukommen und dafür die Qualität der Ball- und Abschlussaktionen zu ermitteln.
+Dadurch können auch Spieler, die die Aktion zwar eingeleitet haben, jedoch nicht unmittelbar an der Strafraumaktion beteiligt waren, hervorgehoben werden.
+In Abbildung \ref{azure_examples} wird eine Auswahl dieser neuen Statistiken gelistet. In der oberen Reihe misst die linke Metrik die Anzahl der Abschlüsse, die ein Spieler initiiert, wenn er den Ball besitzt.
+Die Metrik daneben berechnet die Wahrscheinlichkeit, dass ein Schuss ein Tor erzielt, und kann auf das Spiel hochgerechnet werden, um eine Vorhersage der erwarteten Tore zu liefern.
+Darunter wird die Orientierung nach Ballgewinn gemessen, d.h. ob das Spiel konstruktiv nach vorne gerichtet ist oder ob passiv abgewartet wird.
+Auf der anderen Seite wird ermittelt, welche Spieler an den meisten Ballaktionen beteiligt sind.
+Dadurch wird erkennbar, welche Spieler besser oder schlechter ins Spiel einbezogen werden.
+
+Für Sportarten mit einem geringeren öffentlichen oder finanziellen Interesse sind solche Möglichkeiten jedoch begrenzter, insbesondere dem Lateinformationstanz.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{graphics/azure_examples.png}
+  \caption{Eine Auswahl statistischer Daten, aus Partnerschaft zwischen LaLiga und Microsoft Azure \cite{microsoftazure}}
+  \label{azure_examples}
+\end{figure}
+\section{Relevanz der Arbeit}
+\section{Zielsetzung und Forschungsfragen}
+\section{Aufbau der Arbeit}
+
+\chapter{Grundlagen}
+
+In diesem Kapitel werden grundlegende Konzepte vorgestellt, die im weiteren Verlauf der Arbeit von Bedeutung sind. Kapitel 2.1 erläutert ausführlich den Lateinformationstanz einschließlich seiner Geschichte, Regelungen und Bewertungskriterien. In Kapitel 2.2 werden relevante Algorithmen erklärt, die bei der Entwicklung des Prototyps eine Rolle gespielt haben. Abschließend werden in Kapitel 2.3 die Grundlagen der Konzepte für die Analyse von Trajektorien in anderen Sportarten beschrieben.
+
+\section{Lateinformationstanz}
+Formationstanzen ist im Gegensatz zu Paar- und Solotanz das Tanzen einer koordinierten Choreographie mit bis zu acht Paaren \cite{beck_visual_2023}.
+Im deutschsprachigen Raum haben sich vor allem Standard- und Lateinformationen etabliert.
+Latein steht dabei als Sammelbegriff für fünf verschiedene Tänze: Rumba, Cha-Cha-Cha, Jive, Paso Doble und Samba. In einem Programmheft von 1991 wurden die Ursprünge und Entwicklungen des Formationstanzes zusammengetragen \cite{formation_geschichte}.
+
+% TODO: GESCHICHTE
+
+Die Wertungsrichtlinien des DTV für Formationswettbewerbe formulieren Ziel einer Formationsdarbietung folgendermaßen:
+\enquote{Ziel [...] ist es, durch tanzende Paare zur Musik einer Turnierart mit einer
+  Auswahl tanzspezifischer Bewegungsabläufe synchron auf der Tanzfläche abwechslungsreiche, für
+  Augenblicke stationäre oder bewegte, nachvollziehbare Bilder zu gestalten} \cite{wertungsrichtlinien}.
+
+In den folgenden Abschnitten werden die wichtigsten und für diese Arbeit relevanten Auszüge aus dem Regelwerk zusammengefasst und die Bewertungskriterien erläutert, mit denen analysiert werden kann, inwieweit das Ziel der Formationsdarbietung erreicht wurde.
+
+
+% Demnach entstanden erste Tanzturniere in den 10er Jahren aus den Entwicklungen des Tanzes ausgelöst durch den Wiener Walzer.
+
+
+\subsection{Regelwerk}
+Der Tanzsport in all seinen Varianten, einschließlich des Lateinformationstanzes, wird in Deutschland vom Deutschen Tanzsportverband e. V. (DTV) betreut.
+Die Regeln sind in Form von Satzungen und Ordnungen festgelegt \cite{noauthor_tanzsport_nodate} und es wird auf die jeweils aktuelle Version verwiesen, die sich jederzeit ändern kann.
+Im Folgenden werden die wichtigsten Bestimmungen der Sport- und Turnierordnung des DTVs kurz zusammengefasst, die bei Bedarf eingesehen werden können.
+
+Eine Formationsmannschaft darf aus höchstens aus 25 Personen bestehen.
+Dazu gehören Betreuerinnen und Betreuer, Ersatztänzerinnen und Ersatztänzer sowie eine Formationsmannschaft von sechs bis acht Paaren.
+Die Formationsmannschaft tanzt eine vorgegebene Choreographie, welche aus den fünf lateinamerikanischen Tänzen besteht und jeder davon mindestens einmal enthalten sein muss.
+Die Choreografie umfasst eine Reihe definierter Bilder, in denen die Position jedes Tänzers festgelegt ist.
+Ein Vergleich hierfür ist in Abbildung \ref{fig:def_bild} dargestellt.
+Typischerweise wird die Tanzfläche in Quadrate mit einer Fläche vom einem Quadratmeter unterteilt, um die Bilder in einem Koordinatensystem definieren zu können.
+Die Tänzer nehmen in diesen Bildern diverse geometrische Formen ein, wie horizontale, vertikale oder diagonale Linien sowie Rauten oder Rechtecke.
+Es sind auch weitere Formen möglich.
+Je nach Ligazugehörigkeit bestehen in den unteren Ligen jedoch Einschränkungen für tänzerische Figuren und formationstypische Schwierigkeiten.
+Zwischen den einzelnen Bildern werden Übergänge definiert, die den Pfad von einem zum nächsten Bild darstellen.
+Die Zeitpunkte, an denen die Bilder getanzt werden, hängen von der Formationsmusik ab.
+Dabei kann sich die Geschwindigkeit innerhalb der Musik während der Choreographie beliebig ändern.
+Die Gesamtdauer eines Formationsdurchganges ist auf 6 Minuten begrenzt, beginnt mit dem ersten Ton der Musik und endet bei Musikende.
+Getanzt wird auf einer standardisierten Turnierfläche, die je nach Liga in der Größe variiert.
+In der ersten Bundesliga beträgt die Fläche mindestens $240 m^2$ und hat eine minimale Seitenlänge von $14 m$.
+Im Vergleich zu den anderen Ligen ist die Tanzfläche etwas größer.
+Dort beträgt die Fläche mindestens $180 m^2$ und hat eine minimale Seitenlänge von $12 m$.
+
+
+% Technische Abkürzungen werden beim ersten Gebrauch erläutert und es wird darauf geachtet, dass die Informationsfluss durch kausale Verknüpfungen zwischen Aussagen gewährleistet ist. Der Schreibstil wird in Übereinstimmung mit den Standards der akademischen Schreibweise gehalten.
+
+\begin{figure}
+  \begin{subfigure}{.5\textwidth}
+    \includegraphics[height=4.5cm]{graphics/definiertes_Bild.png}
+    \caption{Definiertes Bild}
+    \label{fig:tanzfläche_choreo}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \includegraphics[height=4.5cm]{graphics/getanztes_bild.png}
+    \caption{Getanztes Bild}
+  \end{subfigure}
+  \caption{Vergleich definiertes und getanztes Bild}
+  \label{fig:def_bild}
+\end{figure}
+
+
+\subsection{Bewertungskriterien}
+Für die Bewertung einer Formationsdarbietung gibt es Wertungsrichtlinien des DTV für Formationswettbewerbe \cite{wertungsrichtlinien}.
+Dabei werden Formationen durch Punktevergabe in vier gleichwertige Wertungsgebiete unterteilt: \textit{Musik}, \textit{Tänzerische Leistung}, \textit{Ausführung der Choreographie} und \textit{Durchgängigkeit und Charakteristik}.
+Teile der Formation, wie Ein- und Ausmarsch, Erscheinungsbild der Tänzer und Audioqualität der Musik werden nicht bewertet.
+Dabei werden je Wertungsgebiet Punkte auf einer Skala von eins bis zehn in einer Wertungstabelle verteilt und summiert.
+
+Im Rahmen der ästhetischen Analyse wird zuerst die \textit{musikalische Dimension} untersucht.
+Dabei wird geprüft, ob die Bewegungen ohne Berücksichtigung von Schwierigkeitsgrad, Takt und Grundrhythmus sowie emotionalen und stilistischen Nuancen der Musik ausdrucksstark sind.
+Es wird also darauf geachtet, ob der ausgewählte Tanz zur Musik passt.
+
+Das nächste Wertungsgebiet, die \textit{Tänzerische Leistung}, bewertet die Bewegungsqualität, die Anpassung an die Musik und Choreographie, sowie die Gleichheit und Balance aller paare.
+Es wird genau darauf geachtet, ob die Übergänge tänzerisch anspruchsvoll sind und eine gleiche Schrittlänge aufweisen, und nicht gegangen oder gelaufen werden.
+
+Als nächstes wird die Aufmerksamkeit auf die \textit{Ausführung der Choreographie} gerichtet.
+Hierbei wird geprüft, wie präzise die Paare die Choreografie tanzen.
+Kriterien sind, ob geometrische Formen perfekt dargestellt werden, also ob Geraden keine Krümmung aufweisen, Kreise nicht ellyptisch wirken und Symmetrie, beziehungsweise gewollte Asymmetrie korrekt dargestellt wird. Zusätzlich wird die Flächenausnutzung, sowie die Zentrierung zur Mitte betrachtet. Dieses Wertungsgebiet berücksichtigt die Schwierigkeit bei der Bewertung. Im Folgenden werden einige Beispiele für schwierige und weniger schwierige Bewegungen aufgeführt:
+\begin{itemize}
+  \item Diagonale Linien sind schwieriger als waagerechte oder Senkrechte Linien
+  \item Richtungswechsel sind schwieriger als gleichbleibende Richtungen
+  \item Je mehr Paare in einem Bild verdeckt zu den Wertungsrichtern stehen, desto schwieriger, da hier Synchronität besonders auffällig
+  \item Übergänge mit Rythmuswechsel sind schwieriger als normale Übergänge
+\end{itemize}
+Die Wahl einer höheren Schwierigkeitsstufe ist für den Erhalt der vollen Punktzahl unerlässlich, birgt jedoch auch ein höheres Risiko.
+
+Die Umsetzung der Choreographie hat einen direkten Einfluss auf die \textit{Durchgängigkeit und die Charakteristik}, das vierte und letzte Wertungsgebiet.
+In diesem wird die Umsetzung der Musik und Bilder in Figuren objektiv betrachtet.
+Des Weiteren auch die Wechsel zwischen Musik, Tempo und Bildern bewertet und wie gut die Formation dabei geschlossen agiert.
+Unter Geschlossenheit versteht man in diesem kontext, wie gut die Tänzerinnen und Tänzer als Einheit agieren.
+
+\section{Algorithmische Grundlagen}
+Dieses Kapitel enthält eine für diese Arbeit relevante Sammlung an theoretischen und algorithmischen Grundlagen. Die genaue Verwendung wird in Kapitel 6 bei der Beschreibung der Implementierung näher erläutert.
+\subsection{Perspektivische Transformation}
+In diesem Abschnitt wird die perspektivische Transformation, eine grundlegende Technik der Computergrafik und Bildverarbeitung, formal erläutert. Die perspektivische Transformation spielt eine entscheidende Rolle bei der Umwandlung von 3D-Szenen in 2D-Bilder und ist in verschiedenen Anwendungsgebieten, einschließlich Computer Vision, von großer Bedeutung. Ein möglicher Algorithmus ist der im Framework OpenCV enthaltene \textit{getPerspectiveTransform}-Algorithmus \cite{src_persp_trans}.
+
+Ziel ist es, eine Liste von Eingangspunkten auf eine Liste von Ausgangspunkten zu transformieren. Im Allgemeinen kann eine perspektivische Transformation folgendermaßen ausgedrückt werden:
+
+\begin{equation}
+  \begin{pmatrix} x_i'\\ y_i'\\ 1\end{pmatrix}=\begin{pmatrix}
+    a_1 & a_2 & b_1 \\
+    a_3 & a_4 & b_2 \\
+    c_1 & c_2 & 1
+  \end{pmatrix}\cdot\begin{pmatrix}
+    x_i \\y_i\\1
+  \end{pmatrix}
+\end{equation}
+
+Dabei beschreibt $\begin{pmatrix}
+    a_1 & a_2 \\
+    a_3 & a_4
+  \end{pmatrix}$ die Transformationen, $\begin{pmatrix}
+    b_1 \\
+    b_2
+  \end{pmatrix}$ die Translation und $\begin{pmatrix}
+    c_1 & c_2
+  \end{pmatrix}$ die Projektion.
+
+Wendet man nun die Transformation auf die vier Punkte an, erhält man nach perspektivischer Division die folgenden Gleichungen
+\begin{equation}
+  x_i'=\frac{a_1\cdot x_i+a_2\cdot y_i+b_1}{c_1\cdot x_i+c_2\cdot y_i +1}\\\forall i\in\{1,2,3,4\}
+\end{equation}
+\begin{equation}
+  y_i'=\frac{a_3\cdot x_i+a_4\cdot y_i+b_2}{c_1\cdot x_i+c_2\cdot y_i +1}\\\forall i\in\{1,2,3,4\}
+\end{equation}
+Durch Auflösen der Brüche und der Verteilung von $x_i'$ und $y_i'$ erhält man folgende Gleichungen
+\begin{equation}
+  c_1\cdot x_i\cdot x_i'+c_2\cdot y_i\cdot y_i'+x'i=a_1\cdot x_i+a_2\cdot y_i+b_1\\\forall i\in\{1,2,3,4\}
+\end{equation}
+\begin{equation}
+  c_1\cdot x_i\cdot x_i'+c_2\cdot y_i\cdot y_i'+x_i'=a_3\cdot x_i+a_4\cdot y_i+b_1\\\forall i\in\{1,2,3,4\}
+\end{equation}
+Bringt man nun alle Unbekannte auf eine Seite, erhält man folgende acht Gleichungen:
+\begin{equation}
+  a_1\cdot x_i+a_2\cdot y_i+b_1-c_1\cdot x_i\cdot x_i'-c_2\cdot y_i\cdot y_i'=x'i\\\forall i\in\{1,2,3,4\}
+\end{equation}
+\begin{equation}
+  a_3\cdot x_i+a_4\cdot y_i+b_1-c_1\cdot x_i\cdot x_i'-c_2\cdot y_i\cdot y_i'=x'i\\\forall i\in\{1,2,3,4\}
+\end{equation}
+Dieses Gleichungssystem ist lösbar, denn acht Unbekannte $a_1$, $a_2$, $a_3$, $a_4$, $c_1$, $c_2$, $b_1$ und $b_2$ lassen sich in einem Gleichungssystem mit acht Gleichungen lösen.
+
+
+% \begin{equation}
+
+% \end{equation}
+
+% \begin{Listing}
+%   \begin{lstlisting}[language=python]
+%   \end{lstlisting}
+%   \caption{Perspektivische Transformation}
+%   \label{perspectiveTransform}
+% \end{Listing}
+
+\subsection{Lineare Interpolation}
+In diesem Abschnitt wird die lineare Interpolation, eine grundlegende Methode in der numerischen Analyse und Datenarbeit formal erläutert. Bei der linearen Interpolation handelt es sich um ein mathematisches Verfahren zur Schätzung von Zwischenwerten basierent auf bekannten Datenpunkten. Diese Interpolation zwischen den Punten $(x_0,y_0)$ und $(x_1,y_1)$ lässt sich formal wie folgt ausdrücken:
+
+\begin{equation}
+  \frac{y-y_0}{x-x_0}=\frac{y_1-y_0}{x_1-x_0}
+\end{equation}
+Um für einen x-Wert den y-Wert zu berechnen muss die Gleichung folgendermaßen gelöst werden:
+\begin{equation}
+  y=\frac{y_0(x_1-x)+y_2(x-x_0)}{x_1-x_0}
+\end{equation}
+
+
+\section{Analyse von Trajektorien im Sport}
+
+
+\chapter{Verwandte Arbeiten}
+\section{Zusammenfassung und Bewertung bisheriger Forschung und Arbeiten}
+\section{Analyse/Visualisierung}
+\section{Trajektorienanalyse}
+
+\chapter{Methodik}
+Dieses Kapitel erläutert die Methodik, die im Rahmen dieser Arbeit angewandt wurde. Naheliegend ist es, einen vorhandenen Ansatz als Orientierung für die Vorgehensweise in der Arbeit zu nutzen. Dafür wird der nutzerorientierte Ansatz aus der Arbeit von Sedlmair et. al. \cite{sedlmair_design_2012} verwendet, welche sich damit befasst, eine Entwicklung mithilfe einer Designstudie zu unterstützen. Folglich wird die Theorie und Durchführung einer problemorientierten Forschung erläutert und im Anschluss die Anwendung des Konzepts auf die vorliegende Arbeit dargelegt.
+\section{Vorgehensmodell}
+
+Beschrieben wird eine Designstudie als \enquote{ein Projekt, in dem Visualisierungsforscher ein spezifisches reales Problem analysieren, mit dem Fachleute konfrontiert sind, ein Visualisierungssystem entwerfen, das die Lösung dieses Problems unterstützt, das Design validieren, über die gewonnenen Erkenntnisse nachdenken, um die Richtlinien für das Visualisierungsdesign zu verfeinern} (übersetzte Definition aus \cite{sedlmair_design_2012}).
+
+Die Durchführung einer Designstudie mittels dem neun-stufigen Modell kann zu drei verschiedenen Ergebnissen führen: \textit{Problemcharakterisierung und -abstraktion}, \textit{validierte Visualisierungslösung} oder \textit{Reflektion über das Design und Vergleich mit anderer Forschung}. Das neun-stufige Vorgehensmodell kann in Abbildung \ref{fig:vorgehensmodell} eingesehen werden und wird im Folgenden in seinen Stufen beschrieben und auf diese Arbeit übertragen.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{graphics/vorgehensmodell.png}
+  \caption{Vorgehensmodell nach Sedlmair et. al. \cite{sedlmair_design_2012}}
+  \label{fig:vorgehensmodell}
+\end{figure}
+
+Die Stufen sind in drei Kategorien verteilt, der \textit{Vorbereitunsphase}, der \textit{Kernphase}, also die wichtigsten Schritte bei der Durchführung der Studie und der \textit{Analysephase}, also die Auswertung der Studie, sowie das ermitteln von Erkenntnissen. Der allgemeine Aufbau der Kategorien und der enthaltenen Stufen ist linear, dennoch gibt es häufig Fälle, in denen Stufen übersprungen, oder nach Erkenntnis neuer Informationen wieder eine oder mehrere Stufen zurückgesprungen werden müssen. Auch sind Überschneidungen durchaus möglich. Dennoch sollte man mit übermäßigem Springen vorsichtig sein, denn beispielsweise eine Entwicklung eines Prototypen vor der Analyse der Anforderungen aller Stakeholder kann das Projekt initial in eine völlig falsche Richtung lenken. Für diese Arbeit kann dieses Modell jedoch nicht in vollem Unfang eingehalten werden, denn es werden beispielsweise für den Deploy oder das Schreiben eine Zeitzuweisung von mehreren Monaten vorgesehen, was bei einer halbjährigen Arbeit nicht möglich ist. Durch die gesammelten Erfahrungen in diesem Projekt erschließt sich eine großzügige Zeitzuweisung dennoch als äußerst sinnvoll.
+
+Die Vorbereitungsphasen \textit{Learn}, \textit{Winnow} und \textit{Cast} konzentrieren sich darauf, wichtige Fragen und Erkenntnisse über die Domäne und der verwendeten Technologie vor dem Start der eigentlichen Implementierung anzueignen.
+
+In der \textit{Learn}-Phase geht es darum, ein solides Verständnis für Visualisierung und Entwurfsrichtlinien mithilfe von Literatur und Forschung zu erlangen. Darunter werden in dieser Phase möglichen Techniken und Bibliotheken, sowie Bewertungsmethoden behandelt. Hierfür wurde im Rahmen der vorliegenden Arbeit ein vergangenes Studienprojekt zur Verfügung gestellt und eine ausführliche Beratung durch die Betreuer angeboten. Für die Vorgehensweise wurde die Arbeit von Sedlmair et al. \cite{sedlmair_design_2012} herangezogen.
+
+Dieses angeeignete Wissen hilft in der \textit{Winnow}-Phase, geeignete Experten für die Durchführung des Projekts zu finden. Dieser Prozess erfordert sorgfältige Auswahl aus einer breiten Palette möglicher Interessenten und ist langwierig. Letztendlich müssen die Interessen der Experten und Forscher klar übereinstimmen. Aufgrund beschränkter Zeit wurden die Experten im Rahmen dieser Arbeit ausgewählt. Etwa zur Halbzeit fand ein erstes Treffen statt. Die Experten sind Tanzlehrer einer Formationsmannschaft, die im vergangenen Studienprojekt bereits gute Erfahrungen gesammelt haben und wertvolle Einwände zur Umsetzung des Prototyps dieser Arbeit beisteuern konnten.
+
+Den Abschluss der Vorbereitunsphase bildet die \textit{Cast}-Phase, in der die Rollen der Kollaboratoren definiert werden. Dabei wird zwischen die entscheidenden Rollen unterschieden, dem Frontline-Analyst, der als Endnutzer die eigentliche Datenanalyse und Anwendung des Tools durchführt, und Gatekeeper, eine Person mit der Befugnis, das Projekt zu genehmigen oder zu blockieren, sowie die weitere Administration. Konnektoren sind Personen, die den Forscher mit anderen interessanten Personen, meist Frontline-Analysten zusammenbringen. Die Domänenexperten sind in diesem Fall die Frontline-Analysten, die das entwickelte Analysetool in den Trainingsalltag einbinden möchten. Die Betreuer haben sowohl die Rolle der Gatekeeper mit dem Professor eingenommen, jedoch auch als Konnektoren gewirkt, um den Forscher mit den Domänenexperten in Verbindung zu bringen.
+
+Nach der Vorbereitungsphase beginnt nun der eigentliche Kern der Designstudie, in der das gesammelte Wissen in die Entwicklung eines Designvorschlags einfließen.
+
+
+\section{Durchgeführte Designstudie}
+
+
+
+\subsection{Erstes Interview: Anforderungsanalyse}
+Das Interview fand in etwa drei Monate nach Projektbeginn statt. Ziel war es, das erarbeitete Wissen über die Domäne zu verifizieren und
+\subsection{Zweites Interview: Bewertung}
+\section{Durchgeführte Studie am Prototypen}
+
+\chapter{Konzept}
+Die Konzeptentwicklung ist ein entscheidender Schritt im Entwicklungsprozess, da sie die Grundlage für die Gestaltung des Prototyps legt. In dieser Phase werden grundlegende Überlegungen und Ideen entwickelt, um die Richtung und den Fokus des Prototyps festzulegen. Im Zentrum stehen die Identifizierung von Schlüsselmerkmalen und -funktionen, für die verschiedene Ansätze und Lösungen in Betracht gezogen werden, um die bestmögliche Umsetzung der gestellten Anforderungen zu erreichen. Dieser kreative Prozess läuft parallel zur Anforderungsanalyse und Recherche und nutzt die gewonnenen Erkenntnisse, um das Konzept iterativ zu verfeinern und an die spezifischen Anforderungen anzupassen.
+
+Parallel hierzu spielen auch technische Aspekte eine entscheidende Rolle. Die Auswahl der richtigen Technologien und Plattformen haben neben der Realisierbarkeit auch einen Einfluss Verfügbarkeit. Daher werden während der Konzeptentwicklung auch technologische Überlegungen angestellt, um sicherzustellen, dass der Prototyp sowohl innovativ als auch praktisch umsetzbar ist. Nach sorgfältiger Abwägung der Möglichkeiten wurde sich auf das Zusammenspiel mehrerer Technologien geeinigt. An erster Stelle steht OpenCV, ein Framework, das sich für transformative Operationen auf dem Datensatz gut eignet. Zur Realisierung des Prototyps wurde React als Framework ausgewählt, weil damit eine interaktive Benutzeroberfläche mit Browserzugriff umgesetzt werden konnte. Schließlich wurde die renommierte und vielseitig genutzte Bibliothek D3 für die dynamische Erstellung interaktiver Datenvisualisierungen verwendet. Genauer darauf wird in Kapitel \ref{chp:implementierung} eingegangen, in dem die Implementierung detailliert behandelt wird.
+
+Nachdem die grundlegenden Konzepte feststehen, folgt die nächste wichtige Phase der Konzeptentwicklung: das System in verschiedene Komponenten zu gliedern. Diese Strukturierung ermöglicht eine detaillierte Analyse einzelner Funktionseinheiten und erleichtert die spätere Entwicklung sowie die Anpassung des Prototyps im Laufe der Zeit. Üblicherweise wird das System nach funktionalen und logischen Gesichtspunkten in Komponenten unterteilt. Dieser Ansatz reduziert die Komplexität des Gesamtsystems und schafft eine klare Struktur. Dabei werden die spezifischen Aufgaben und Verantwortlichkeiten jeder einzelnen Komponente optimiert.
+
+In diesem Abschnitt werden die Systemkomponenten im Detail betrachtet. Es werden ihre Grundüberlegungen und Funktionalitäten beschrieben sowie eventuelle Veränderungen im Laufe der Zeit. Ein Einblick in die Entwicklungsgeschichte der einzelnen Komponenten ist entscheidend, um die Entscheidungsprozesse und Iterationen während des Entwicklungsprozesses nachvollziehen zu können.
+
+\section{Visualisierung der Tanzfläche}
+Für die graphische Visualisierung der Tanzfläche wird auf der bisherigen Visualisierung der Choreographie aufgebaut, welche bereits in Abbildung \ref{fig:tanzfläche_choreo} angegeben ist. Dies hat den Vorteil, dass die einzelnen Tänzerinnen und Tänzer auf einer Meterskala dargestellt werden können, um eine Verbindung zur Realität zu erhalten. Zu dieser Skala sollen folgende Funktionen hinzugefügt werden:
+% \begin{itemize}
+%   \item Darstellung der Abweichung eines Tänzers zum in der Choreographie definierten Bild
+%   \item Auswahl von Tänzern und Tänzerinnen in den Fokus
+%   \item Visualisierung der Trajektorien zwischen mehreren Bildern in der Choreographie
+% \end{itemize}
+\paragraph{Darstellung der Abweichung eines Tänzers zum in der Choreographie definierten Bild}
+Die Visualisierung der Abweichung eines Tänzers von der vorgegebenen Choreographie ist für die Beurteilung der Qualität einer Tanzperformance von zentraler Bedeutung. Dabei können verschiedene Metriken berücksichtigt werden. Die Implementierung dieser Funktion ermöglicht es, einzelne Tänzerinnen und Tänzer hervorzuheben, die signifikant von der Choreographie abweichen. Dadurch können gezielte Verbesserungen vorgeschlagen und eine präzisere Anpassung der Tanzbewegungen erreicht werden.
+\paragraph{Auswahl von Tänzern und Tänzerinnen in den Fokus}
+\paragraph{Visualisierung der Trajektorien zwischen mehreren Bildern in der Choreographie}
+\section{Einbinden des Videos}
+Um ein besseres Verständnis über das im Koordinatensystem visualisierte Frame aus der Choreographie zu erhalten, soll das Originalvideo in den Prototypen miteingebaut werden. Eine hilfreiche Funktionalität ist, im Video die Boundingbox der auf der Visualisierung der Tanzfläche ausgewählten Tänzer und Tänzerinnen anzuzeigen. Somit kann von der abstrakten Darstellung eine Verknüpfung zur Realität erstellt werden.
+\section{Interaktiver Zeitleiste}
+
+
+% \section{Skizzen}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{graphics/vorschlag_positionsabweichung_koordinatensystem.png}
+  \caption{Vorschlag Darstellung der Abweichung vom definierten Bild}
+  \label{fig:tanzfläche}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{graphics/vorschlag_videoeinbindung_mit_bbox.png}
+  \caption{Vorschlag Videoeinbindung mit Anzeigen von BoundingBoxen}
+  \label{fig:video}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{graphics/vorschlag_timeline.png}
+  \caption{Vorschlag Timeline mit Diagramm}
+  \label{fig:timeline}
+\end{figure}
+% \section{Gedankliches Konzept}
+% \section{Umgesetzt/ nicht umgesetzt}
+
+\chapter{Implementierung \label{chp:implementierung}}
+\section{Verwendete Technologien}
+Der Prototyp wurde als webbasierte Single-page application mithilfe von TypeScript entwickelt und basiert auf einem früheren privaten Prototypen aus einem früheren Projekt, der weiterentwickelt wurde. Dieses Konzept wurde gewählt, denn SPAs ermöglichen eine native App-ähnliche Benutzererfahrung im Web.
+\subsection{OpenCV}
+Die Open Source Computer Vision Library (OpenCV) ist eine leistungsstarke Softwarebibliothek für Computer Vision und maschinelles Lernen. Die Bibliothek verfügt über mehr als 2500 optimierte Algorithmen, die sich ideal für Aufgaben im Bereich maschinelles Lernen und Bildverarbeitung eignen \cite{opencv2023about}. Eine entscheidende Funktion dieser Bibliothek, die für dieses Projekt von großer Bedeutung ist, beinhaltet das Arbeiten auf Bildern mit Skalierungen, Translationen und andere Transformationen. Hierfür wird ein Video in Form eines VideoCapture-Objekts eingelesen. Dieses Objekt repräsentiert eine Sequenz von Bildern, die dann schrittweise durchlaufen werden können, um gewünschte Transformationen anzuwenden.
+
+
+\subsection{React}
+
+React ist eine ursprünglich von  Facebook, Inc. (heute Meta Platforms, Inc.) entwickelte, nach einem Jahr frei zugänglich gemachte, JavaScript Bibliothek für das Erstellen von Benutzeroberflächen. Es wurde entwickelt, um große Anwendungen mit veränderlichen Daten zu implementieren und stellt den \glqq View\grqq-Teil des Model-View-Controller-Entwicklungsparadigmas bereit \cite{krill2023react}. Dabei handelt es sich um einen Ansatz, die Anwendung von der Benutzeroberfläche zu trennen \cite{deacon-model-view-controller2009}. Dieses Paradigma setzt sich aus drei wesentlichen Komponenten zusammen: dem Datenbereich (Model), der Steuerungslogik (Controller) und der von React erstellten Benutzeroberfläche (View), wie in Abbildung \ref{fig:MVCdiag} veranschaulicht.
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    % Erstes Oval
+    \node[draw, ellipse] (ctrl) at (0,0) {Controller};
+    % Zweites Oval
+    \node[draw, ellipse] (view) at (3,0) {View};
+    % Drittes Oval
+    \node[draw, ellipse] (model) at (1.5,2.5) {Model};
+
+    % Anpassung der Pfeillänge
+    \draw[->, shorten >= 3pt, shorten <= 3pt,] (ctrl) -- (view);
+    \draw[->, shorten >= 3pt, shorten <= 3pt] (view) -- (model);
+    \draw[->, shorten >= 3pt, shorten <= 3pt] (ctrl) -- (model);
+    \draw[->, shorten >= 3pt, shorten <= 3pt, dotted] (model) to [out=-30, in=90] (view);
+
+  \end{tikzpicture}
+  \caption{Model-View-Controller \cite{inbook}}
+  \label{fig:MVCdiag}
+
+\end{figure}
+
+
+
+React ermöglicht es, die Oberfläche in einzelne Teile nahmens Komponenten zu zerlegen, die dann kombiniert werden können \cite{react2023}. Solche Komponenten können so klein wie ein simpler Button oder so groß wie eine ganze Webseite sein. Jede Komponente besitzt ihren eigenen Zustand, und wenn sich dieser Zustand ändert, wird auch der Zustand der gesamten App geändert. Im Beispiel in Listing \ref{lst:MyButton} sehen Sie eine einfache React-Komponente, welche einen einfachen Button erstellt. Diese Komponente wird in Listing \ref{lst:MyApp} in eine weitere Komponente namens MyApp verschachelt.
+
+\lstinputlisting[language=Java,label=lst:MyButton,caption={Simple Button Component},float]{code/MyButton.tsx}
+\lstinputlisting[language=Java,label=lst:MyApp,caption={Simple React App},float]{code/MyApp.tsx}
+
+
+Es hat sich als Standard etabliert, Komponenten in der Markup-Syntax TSX (oder JSX in JavaScript) zu schreiben zur Vereinfachung. Dadurch wird das Einbetten von Code in das zurückgegebene Element ermöglicht. Diese Syntax ist strenger als HTML und erlaubt nur das Zurückgeben eines einzelnen TSX-Tags pro Komponente, wodurch jede Komponente ein einzelnes Element darstellt.
+
+React arbeitet nach dem Prinzip der Reconciliation \cite{virtualDOM}. Dabei wird eine virtuelle Darstellung der Anwendung im Speicher gehalten und durch die ReactDOM-Bibliothek mit dem tatsächlichen DOM synchronisiert. Durch diesen Ansatz wird die deklarative API von React ermöglicht. Man teilt React mit, in welchem Zustand die Benutzeroberfläche sein sollte, und React stellt sicher, dass das DOM diesem Zustand entspricht. Dadurch werden die Manipulation von Attributen, die Behandlung von Ereignissen und die manuelle Aktualisierung des DOMs abstrahiert, die der Entwickler selbst bei der Entwicklung der Anwendung durchführen müsste.
+
+\paragraph{Document Object Model}
+
+Das wichtige Rückgrad einer modernen Webanwendung für Manipulation und Darstellung ist das Document Object Model. Durch das dieses wird ein HTML-Dokument in Form eines logischen Baums dargestellt. Dabei endet jeder Zweig in einem Knoten, welcher Objekte enthält. Dieser Baum ermöglicht einen programmatischen Zugriff, um den Stil oder Inhalt des Dokuments zu ändern.
+
+
+
+
+
+
+\subsection{D3}
+\subsection{Zusammenspiel React und D3}
+In der Welt der Webentwicklung stoßen Entwickler häufig auf Herausforderungen, wenn sie React und D3.js, zwei mächtige Bibliotheken für die Benutzeroberflächengestaltung und Datenvisualisierung, miteinander kombinieren möchten.
+Ein grundlegendes Problem ergibt sich aus der Art und Weise, wie React und D3 mit dem Document Object Model (DOM) interagieren.
+
+React verwaltet den DOM effizient durch die Verwendung des Virtual DOM und aktualisiert ihn bedarfsorientiert. Im Gegensatz dazu arbeitet D3 direkt mit dem DOM und manipuliert es, um Daten zu visualisieren. Diese unterschiedlichen Ansätze können zu Konflikten führen, wenn beide Bibliotheken gleichzeitig versuchen, das DOM zu ändern. Unvorsichtige Integrationen können zu unerwartetem Verhalten und Fehlern führen. Eine mögliche Lösung für dieses Problem besteht darin, eine React-Komponente zu erstellen, welche das SVG-Element enthält, in dem die D3-Visualisierung erstellt werden soll. Dabei wird auf einer Referenz auf ein SVG-Element im DOM gearbeitet und mittels der useEffect-Funktion eine Visualisierung angewendet.
+
+\section{Transformation}
+\lstinputlisting[language=Python,label=lst:n_point_transformation,caption={N\_Points\_Transformation},float]{code/n_points_transformation.py}
+\subsection{RANSAC}
+
+\section{Datenvorverarbeitung \label{chp:datenvorbereitung}}
+\section{Prototyp}
+
+\chapter{Evaluation}
+\section{Studie}
+\subsection{Studienaufbau}
+\subsection{Teilnehmer}
+\subsection{Forschungsfragen}
+\subsection{Evaluationsmethoden}
+\section{Resultate und Interpretation}
+\section{Einschränkungen}
+\section{Schlussfolgerung}
+
+\chapter{Probleme und Herausforderungen}
+\section{Extraktion mittels Tracking-Algorithmen}
+Der bisherige Ansatz, die Positionen der Tänzerinnen und Tänzer aus dem Videomaterial zu analysieren, war zwar für die Entwicklung eines Prototyps ausreichend, ist aber in der Realität, d.h. im regulären Trainingsalltag, nicht praktikabel. Denn das in Kapitel \ref{chp:datenvorbereitung} beschriebene Extraktionsverfahren erfordert die framegenaue Annotation von Bounding Boxes im Videomaterial mittels einer Software. Diese Methode ist jedoch sehr zeitaufwendig, da die Analyse mehrere Stunden bis Tage dauert, wenn sie von einer Person durchgeführt wird. Daher müssen die Trainer entweder viel wertvolle Zeit in die Nachbereitung des Trainings investieren oder teures Personal einstellen, das diese Arbeit übernimmt - beides ist nicht praktikabel.
+Im Vorfeld der Entwicklung des Prototyps wurde daher nach alternativen Methoden gesucht. Als besonders vielversprechend erwies sich der Einsatz von softwarebasierten Motion Trackern. Dies hätte den Vorteil, dass die Boundingboxen algorithmisch generiert werden und somit viel Arbeit eingespart werden könnte. In einer idealen Umgebung wäre dieser Ansatz die perfekte Lösung und würde lediglich die Definition der Choreographie sowie eine Videoaufzeichnung der Trainingseinheit erfordern. In der Praxis weist dieser Ansatz jedoch zahlreiche Einschränkungen auf. Dies ist auf eine Reihe von Faktoren zurückzuführen, die im Folgenden diskutiert werden.
+
+Ein Problem liegt in der Hardware der Kamera. Ein Tracker kann nur so gut arbeiten, wie die zur Verfügung stehenden Daten. Das zur Verfügung gestellte Videomaterial hatte eine relativ geringe Auflösung, so dass selbst für das menschliche Auge an manchen Stellen nicht erkennbar war, zu welcher Tänzerin oder zu welchem Tänzer das halb verdeckte Körperteil gehörte. In Kombination mit der gleichen Kleidung, die die Tänzerinnen und Tänzer tragen, nämlich rote Kleider für die Frauen und schwarze Anzüge für die Männer, ist eine Unterscheidung der Tänzerinnen und Tänzer durch den Tracker, insbesondere bei teilweiser oder vollständiger Verdeckung, nicht möglich. Tracker wie Tapnet arbeiten mit Punktverfolgung. Durch die geringe Auflösung und auch durch Rotationen gehen diese Punkte regelmäßig verloren. Dadurch ist der Analyseaufwand noch höher als bei einer manuellen Analyse. Nicht zu vernachlässigen ist auch der Rechenaufwand der Hardware bei der Extraktion der Trajektorien aus dem Video. Hier besteht ein Trade-off zwischen der Laufzeit und dem Rechenaufwand des Algorithmus und der Genauigkeit der extrahierten Trajektorien. Denn selbst mit der heute überdurchschnittlich leistungsfähigen Hardware ist die Analyse mit hoher Genauigkeit sehr zeitaufwendig. Mit diesem Ansatz würde die Zielgruppe einer solchen Software stark eingeschränkt und das System wäre nicht für jedermann nutzbar.
+
+Für diese Probleme gibt es verschiedene Lösungsansätze. Neben der Investition in besseres Equipment kann während des Trainings unterschiedliche Kleidung getragen werden, um die Tänzer farblich zu unterscheiden. Mithilfe von Filtern können dann alle Tänzer bis auf einen ausgeblendet werden, um die genaue Position zu extrahieren. Zusätzlich wäre es hilfreich, eine Kamera über der Tanzfläche zu installieren, um eine Überlappung der Tänzer zu vermeiden. Ansätze wie die Ausstattung des Raumes mit mehreren Kameras oder ein Boden, der die Positionen durch Berührung ermitteln kann, würden den Rahmen dieser Domäne sprengen.
+
+\section{Probleme mit linearer Interpolation}
+\section{Zukünftige Forschung}
+\section{Kritik von Experten}
+\section{Weiterentwicklung Ansatz}
+
+\chapter{Zusammenfassung}
+\section{Zukünftige Forschung}
+\section{Wichtigste Erkenntnisse}
+\section{Bedeutung Arbeit für Forschungsfeld}
+
+\printbibliography
+
+% Alle URLs wurden zuletzt am 17.\,03.\,2018 geprüft.
+Alle URLs wurden zuletzt am \today \space geprüft.
+
+%\renewcommand{\appendixtocname}{Anhang}
+%\renewcommand{\appendixname}{Anhang}
+%\renewcommand{\appendixpagename}{Anhang}
+\appendix
+
+
+\pagestyle{empty}
+\renewcommand*{\chapterpagestyle}{empty}
+\Versicherung
+\end{document}
