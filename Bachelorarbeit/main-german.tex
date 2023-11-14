@@ -304,7 +304,7 @@ Dort beträgt die Fläche mindestens $180 m^2$ und hat eine minimale Seitenläng
 \end{figure}
 
 
-\subsection{Bewertungskriterien}
+\subsection{Bewertungskriterien \label{chp:bewertungskriterien}}
 Für die Bewertung einer Formationsdarbietung gibt es Wertungsrichtlinien des DTV für Formationswettbewerbe \cite{wertungsrichtlinien}.
 Dabei werden Formationen durch Punktevergabe in vier gleichwertige Wertungsgebiete unterteilt: \textit{Musik}, \textit{Tänzerische Leistung}, \textit{Ausführung der Choreographie} und \textit{Durchgängigkeit und Charakteristik}.
 Teile der Formation, wie Ein- und Ausmarsch, Erscheinungsbild der Tänzer und Audioqualität der Musik werden nicht bewertet.
@@ -575,8 +575,11 @@ React verwaltet den DOM effizient durch die Verwendung des Virtual DOM und aktua
 \section{Einschränkungen}
 \section{Schlussfolgerung}
 
+
 \chapter{Probleme und Herausforderungen}
-\section{Extraktion mittels Tracking-Algorithmen}
+Im Fokus dieses Kapitels steht die Auseinandersetzung von identifizierten Problemen und Herausforderungen. Dabei werden nicht nur die Schwierigkeiten beleuchtet, die bei der Erstellung des Prototypen auftraten, sondern auch die Einschränkungen des Prototyps untersucht, die Aufgrund von verschiedenen Faktoren und Annahmen auftreten.
+\section{Extraktion mittels Computer Vision Methoden}
+
 Der bisherige Ansatz, die Positionen der Tänzerinnen und Tänzer aus dem Videomaterial zu analysieren, war zwar für die Entwicklung eines Prototyps ausreichend, ist aber in der Realität, d.h. im regulären Trainingsalltag, nicht praktikabel. Denn das in Kapitel \ref{chp:datenvorbereitung} beschriebene Extraktionsverfahren erfordert die framegenaue Annotation von Bounding Boxes im Videomaterial mittels einer Software. Diese Methode ist jedoch sehr zeitaufwendig, da die Analyse mehrere Stunden bis Tage dauert, wenn sie von einer Person durchgeführt wird. Daher müssen die Trainer entweder viel wertvolle Zeit in die Nachbereitung des Trainings investieren oder teures Personal einstellen, das diese Arbeit übernimmt - beides ist nicht praktikabel.
 Im Vorfeld der Entwicklung des Prototyps wurde daher nach alternativen Methoden gesucht. Als besonders vielversprechend erwies sich der Einsatz von softwarebasierten Motion Trackern. Dies hätte den Vorteil, dass die Boundingboxen algorithmisch generiert werden und somit viel Arbeit eingespart werden könnte. In einer idealen Umgebung wäre dieser Ansatz die perfekte Lösung und würde lediglich die Definition der Choreographie sowie eine Videoaufzeichnung der Trainingseinheit erfordern. In der Praxis weist dieser Ansatz jedoch zahlreiche Einschränkungen auf. Dies ist auf eine Reihe von Faktoren zurückzuführen, die im Folgenden diskutiert werden.
 
@@ -585,6 +588,10 @@ Ein Problem liegt in der Hardware der Kamera. Ein Tracker kann nur so gut arbeit
 Für diese Probleme gibt es verschiedene Lösungsansätze. Neben der Investition in besseres Equipment kann während des Trainings unterschiedliche Kleidung getragen werden, um die Tänzer farblich zu unterscheiden. Mithilfe von Filtern können dann alle Tänzer bis auf einen ausgeblendet werden, um die genaue Position zu extrahieren. Zusätzlich wäre es hilfreich, eine Kamera über der Tanzfläche zu installieren, um eine Überlappung der Tänzer zu vermeiden. Ansätze wie die Ausstattung des Raumes mit mehreren Kameras oder ein Boden, der die Positionen durch Berührung ermitteln kann, würden den Rahmen dieser Domäne sprengen.
 
 \section{Probleme mit linearer Interpolation}
+Eine lateinische Formationschoreographie wird durch eine Reihe von Formationsbildern definiert. Aus diesem Grund ergibt sich bei der Implementierung eines Prototyps mit für den Menschen kontinuierlicher Granularität das Problem, dass die Trajektorien in kontinuierlicher Form vorliegen, während die Formationsbilder nur diskret definiert sind. Dies bedeutet, dass die Trajektorie zwischen diesen Bildern undefiniert ist und interpoliert werden muss. Im Rahmen dieser Arbeit wurde die lineare Interpolation als Ansatz zur Lösung des Problems verwendet. Der Vorteil dieser Methode ist, dass sie einfach und ohne großen Rechenaufwand durchgeführt werden kann. Die Problematik dieses Ansatzes geht mit der Definition aus den im Abschnitt \ref{chp:bewertungskriterien} beschriebenen Bewertungskriterien des DTV \cite{wertungsrichtlinien} einher, dass Übergänge tänzerisch anspruchsvoll sein müssen, d.h. eine lineare Interpolation führt oft zu Ungenauigkeiten bei diesen Übergängen.
+
+%TODO bildliches Beispiel%
+
 \section{Zukünftige Forschung}
 \section{Kritik von Experten}
 \section{Weiterentwicklung Ansatz}
