@@ -238,10 +238,27 @@ Für Sportarten mit einem geringeren öffentlichen oder finanziellen Interesse s
   \label{azure_examples}
 \end{figure}
 \section{Relevanz der Arbeit}
-\section{Zielsetzung und Forschungsfragen}
-\section{Aufbau der Arbeit}
+% \section{Zielsetzung und Forschungsfragen}
+% \section{Aufbau der Arbeit}
+\section{Zielsetzung und Aufbau der Arbeit}
+Diese Arbeit beschäftigt sich mit einem Prozess zur Extraktion und visuellen Analyse von Bewegungen von Tänzern, die eine lateinamerikanische Formationschoreographie aufführen. Es wird ein dreistufiger Prozess mit den Schritten der Extraktion von Trajektorien, Transformation und Visualisierung in einem entwickelten Prototyp  spezifiziert. Zur Unterstützung dieses Prozesses werden die Methoden und Schritte beschrieben, die von Sedlmeir et al. in der Design Study Methodology dargelegt wurden. Die Arbeit ist wie folgt gegliedert:
 
-\chapter{Grundlagen}
+Im \ref{chp:relatedwork}. Kapitel werden verwandte Arbeiten und Forschungen im Bereich der Sportvisualisierung und der Visualisierung im Lateinformationstanz erläutert. Kapitel \ref{chp:grundlagen} bietet daraufhin einen Überblick über die grundlegenden Methoden und Algorithmen präsentiert und die Domäne.
+In Kapitel \ref{chp:methodik} wird die Methodik erläutert, indem das Vorgehensmodell vorgestellt und der Ablauf sowie die Ergebnisse des Interviews zur Anforderungsanalyse und Domänenexploration präsentiert werden. Nachdem in Kapitel \ref{chp:konzept} das Konzept vorgestellt und die Designvorschläge sowie ihre weitere Berücksichtigung diskutiert wurden, folgt in Kapitel \ref{chp:implementierung} die Beschreibung des Prototyps sowie der für die Aufbereitung verwendeten und entwickelten Programme. Dabei werden auch die Technologien erläutert, die zum Einsatz kamen.
+Kapitel \ref{chp:evaluation} befasst sich mit der Bewertung des gegebenen Prototyps, während in Kapitel \ref{chp:probleme} sowohl Entwicklungs- als auch Einsatzprobleme und -herausforderungen erläutert werden. In Kapitel \ref{chp:zusammenfassung} werden abschließend die gewonnenen Erkenntnisse zusammengefasst und ein Ausblick auf zukünftige Forschungsmöglichkeiten gegeben.
+
+
+\chapter{Verwandte Arbeiten \label{chp:relatedwork}}
+An dieser Stelle werden verwandte Arbeiten in Bereichen der Videoanalyse mit Datenextraktion (\ref{objekterkennung}), der Visualisierung dieser extrahierten Daten (\ref{visualisierung}) und der Analyse (\ref{datenanalyse}). Im Anschluss wird versucht, diese Arbeit einzuordnen.
+\section{Objekterkennung und Verfolgung \label{objekterkennung}}
+\section{Visualisierung von Daten aus Videos \label{visualisierung}}
+\section{Daten- und Trajektorienanalyse im Sport \label{datenanalyse}}
+\section{Zusammenfassung und Bewertung bisheriger Forschung und Arbeiten}
+\section{Positionierung dieser Arbeit}
+% \section{Analyse/Visualisierung}
+% \section{Trajektorienanalyse}
+
+\chapter{Grundlagen \label{chp:grundlagen}}
 
 In diesem Kapitel werden grundlegende Konzepte vorgestellt, die im weiteren Verlauf der Arbeit von Bedeutung sind. Kapitel 2.1 erläutert ausführlich den Lateinformationstanz einschließlich seiner Geschichte, Regelungen und Bewertungskriterien. In Kapitel 2.2 werden relevante Algorithmen erklärt, die bei der Entwicklung des Prototyps eine Rolle gespielt haben. Abschließend werden in Kapitel 2.3 die Grundlagen der Konzepte für die Analyse von Trajektorien in anderen Sportarten beschrieben.
 
@@ -410,12 +427,7 @@ Um für einen x-Wert den y-Wert zu berechnen muss die Gleichung folgendermaßen 
 \section{Analyse von Trajektorien im Sport}
 
 
-\chapter{Verwandte Arbeiten}
-\section{Zusammenfassung und Bewertung bisheriger Forschung und Arbeiten}
-\section{Analyse/Visualisierung}
-\section{Trajektorienanalyse}
-
-\chapter{Methodik}
+\chapter{Methodik \label{chp:methodik}}
 Dieses Kapitel erläutert die Methodik, die im Rahmen dieser Arbeit angewandt wurde. Naheliegend ist es, einen vorhandenen Ansatz als Orientierung für die Vorgehensweise in der Arbeit zu nutzen. Dafür wird der nutzerorientierte Ansatz aus der Arbeit von Sedlmair et. al. \cite{sedlmair_design_2012} verwendet, welche sich damit befasst, eine Entwicklung mithilfe einer Designstudie zu unterstützen. Folglich wird die Theorie und Durchführung einer problemorientierten Forschung erläutert und im Anschluss die Anwendung des Konzepts auf die vorliegende Arbeit dargelegt.
 \section{Vorgehensmodell}
 
@@ -451,7 +463,7 @@ Das Interview fand in etwa drei Monate nach Projektbeginn statt. Ziel war es, da
 \subsection{Zweites Interview: Bewertung}
 \section{Durchgeführte Studie am Prototypen}
 
-\chapter{Konzept}
+\chapter{Konzept \label{chp:konzept}}
 Die Konzeptentwicklung ist ein entscheidender Schritt im Entwicklungsprozess, da sie die Grundlage für die Gestaltung des Prototyps legt. In dieser Phase werden grundlegende Überlegungen und Ideen entwickelt, um die Richtung und den Fokus des Prototyps festzulegen. Im Zentrum stehen die Identifizierung von Schlüsselmerkmalen und -funktionen, für die verschiedene Ansätze und Lösungen in Betracht gezogen werden, um die bestmögliche Umsetzung der gestellten Anforderungen zu erreichen. Dieser kreative Prozess läuft parallel zur Anforderungsanalyse und Recherche und nutzt die gewonnenen Erkenntnisse, um das Konzept iterativ zu verfeinern und an die spezifischen Anforderungen anzupassen.
 
 Parallel hierzu spielen auch technische Aspekte eine entscheidende Rolle. Die Auswahl der richtigen Technologien und Plattformen haben neben der Realisierbarkeit auch einen Einfluss Verfügbarkeit. Daher werden während der Konzeptentwicklung auch technologische Überlegungen angestellt, um sicherzustellen, dass der Prototyp sowohl innovativ als auch praktisch umsetzbar ist. Nach sorgfältiger Abwägung der Möglichkeiten wurde sich auf das Zusammenspiel mehrerer Technologien geeinigt. An erster Stelle steht OpenCV, ein Framework, das sich für transformative Operationen auf dem Datensatz gut eignet. Zur Realisierung des Prototyps wurde React als Framework ausgewählt, weil damit eine interaktive Benutzeroberfläche mit Browserzugriff umgesetzt werden konnte. Schließlich wurde die renommierte und vielseitig genutzte Bibliothek D3 für die dynamische Erstellung interaktiver Datenvisualisierungen verwendet. Genauer darauf wird in Kapitel \ref{chp:implementierung} eingegangen, in dem die Implementierung detailliert behandelt wird.
@@ -565,7 +577,7 @@ React verwaltet den DOM effizient durch die Verwendung des Virtual DOM und aktua
 \section{Datenvorverarbeitung \label{chp:datenvorbereitung}}
 \section{Prototyp}
 
-\chapter{Evaluation}
+\chapter{Evaluation \label{chp:evaluation}}
 \section{Studie}
 \subsection{Studienaufbau}
 \subsection{Teilnehmer}
@@ -576,7 +588,7 @@ React verwaltet den DOM effizient durch die Verwendung des Virtual DOM und aktua
 \section{Schlussfolgerung}
 
 
-\chapter{Probleme und Herausforderungen}
+\chapter{Probleme und Herausforderungen \label{chp:probleme}}
 Im Fokus dieses Kapitels steht die Auseinandersetzung von identifizierten Problemen und Herausforderungen. Dabei werden nicht nur die Schwierigkeiten beleuchtet, die bei der Erstellung des Prototypen auftraten, sondern auch die Einschränkungen des Prototyps untersucht, die Aufgrund von verschiedenen Faktoren und Annahmen auftreten.
 \section{Extraktion mittels Computer Vision Methoden}
 
@@ -596,7 +608,7 @@ Eine Lateinformationschoreographie wird durch eine Reihe von Formationsbildern d
 \section{Kritik von Experten}
 \section{Weiterentwicklung Ansatz}
 
-\chapter{Zusammenfassung}
+\chapter{Zusammenfassung \label{chp:zusammenfassung}}
 \section{Zukünftige Forschung}
 \section{Wichtigste Erkenntnisse}
 \section{Bedeutung Arbeit für Forschungsfeld}
